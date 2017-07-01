@@ -26,9 +26,10 @@ export default {
   data () {
     return {
       items: [
-        { name: 'Sasha Ivanov', url: 'dashboard', role: 'CEO', photo: '/static/img/1.jpg', project: 'Waves', project_url: 'https://wavesplatform.com/'},
-        { name: 'Sasha Ivanov', url: 'dashboard', role: 'Developer', photo: '/static/img/2.jpg', project: 'bitShares', project_url: 'https://bitshares.org/'},
-        { name: 'Sasha Ivanov', url: 'dashboard', role: 'Investor', photo: '/static/img/3.gif', project: 'Ethereum', project_url: 'https://www.ethereum.org/'},
+        { name: 'Putin Vladimir', url: 'dashboard', role: 'CEO', photo: '/static/img/1.jpg', project: 'PutinCoin', project_url: 'https://coinmarketcap.com/currencies/putincoin/'},
+        { name: 'Sasha Ivanov', url: 'dashboard', role: 'CEO', photo: '/static/img/2.jpg', project: 'Waves', project_url: 'http://wavesplatform.com/'},
+        { name: 'Buterin Vitalik', url: 'dashboard', role: 'CEO', photo: '/static/img/6.jpg', project: 'Ethereum', project_url: 'https://www.ethereum.org/'},
+        { name: 'Patrick Dai', url: 'dashboard', role: 'CEO', photo: '/static/img/5.jpg', project: 'Ethereum', project_url: 'https://qtum.org'},
       ]
     }
   }
