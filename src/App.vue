@@ -9,7 +9,9 @@
       </div>
       <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
-            <li><a :href="server + '/auth/facebook'"><span uk-icon="icon: user"></span>&nbsp;Auth with facebook</a></li>
+
+            <li v-if="username"><a :href="server + '/auth/facebook'"><span uk-icon="icon: user"></span>&nbsp;{{ username }}</a></li>
+            <li v-else><a :href="server + '/auth/facebook'"><span uk-icon="icon: user"></span>&nbsp;Auth with facebook</a></li>
             <li><router-link to="/add"><span uk-icon="icon: happy"></span>&nbsp;Add face</router-link></li>
         </ul>
       </div>
