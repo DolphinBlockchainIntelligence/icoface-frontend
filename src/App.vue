@@ -9,7 +9,7 @@
       </div>
       <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
-            <li><router-link to="/"><span uk-icon="icon: user"></span>&nbsp;Auth with facebook</router-link></li>
+            <li><router-link to="/auth/facebook"><span uk-icon="icon: user"></span>&nbsp;Auth with facebook</router-link></li>
             <li><router-link to="/add"><span uk-icon="icon: happy"></span>&nbsp;Add face</router-link></li>
         </ul>
       </div>

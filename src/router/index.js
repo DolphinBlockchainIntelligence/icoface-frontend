@@ -18,10 +18,5 @@ export default new Router({
       name: 'Add',
       component: Add
     }
-    // {
-    //   path: '/face/:id',
-    //   name: 'Face',
-    //   component: Face
-    // }
   ]
 })

@@ -1,8 +1,6 @@
 <template>
   <div class="uk-container">
-    <!-- <h3>Sasha Ivanov</h3> -->
     <div class="face-list" v-for="item in items">
-      <!-- <div class="face-item uk-grid"> -->
       <div class="face-item">
         <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
           <div class="uk-card-media-left uk-cover-container">
@@ -12,20 +10,11 @@
           <div>
             <div class="uk-card-body">
               <h3 class="uk-card-title">{{ item.name }}</h3>
-              <!-- <div class="face-name"><h4 class="label">{{ item.name }}</h4></div> -->
               <div class="face-project"><h5 class="label">Project:</h5> <a :href="item.project_url" target="_blank">{{ item.project }}</a></div>
               <div class="face-role"><h5 class="label">Role:</h5> {{ item.role }}</div>
             </div>
           </div>
         </div>
-<!--         <div class="uk-width-1-6@m">
-          <img class="face-photo" :src="item.photo" :alt="item.name">
-        </div>
-        <div class="uk-width-expand@m">
-          <div class="face-name"><h4 class="label">{{ item.name }}</h4></div>
-          <div class="face-project"><h5 class="label">Project:</h5> <a :href="item.project_url" target="_blank">{{ item.project }}</a></div>
-          <div class="face-role"><h5 class="label">Role:</h5> {{ item.role }}</div>
-        </div> -->
       </div>
     </div>
   </div>
@@ -48,12 +37,6 @@ export default {
 
 <style lang="sass">
 .face-item
-  // border-bottom: 1px solid #ddd
-  // padding-bottom: 10px
-  // margin-bottom: 10px
-  // .face-photo
-  //   max-height: 100px
-  //   max-width: 100px
   .face-name
     .label
       display: inline-block
