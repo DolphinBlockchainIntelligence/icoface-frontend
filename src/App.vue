@@ -33,6 +33,13 @@ export default {
   }),
   mounted () {
     UIkit.use(Icons)
+    axios.get(this.server + '/name')
+    .then(response => {
+      this.username = response.data
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
   }
 }
 </script>

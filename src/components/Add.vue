@@ -22,7 +22,7 @@
               <input class="uk-input" type="text" placeholder="Project url">
           </div>
           <div class="uk-margin">
-            <button class="uk-button uk-button-primary">Burn block</button>
+            <button class="uk-button uk-button-primary"><span uk-icon="icon: bolt"></span>&nbsp;Burn block</button>
           </div>
       </fieldset>
     </form>
