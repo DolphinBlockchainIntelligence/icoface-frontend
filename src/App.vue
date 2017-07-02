@@ -60,7 +60,7 @@ export default {
   methods: {
     searchByName: function () {
       console.log(document.getElementById('search-input').value)
-      axios.get('http://74.119.194.18/textsearch', {
+      axios.post('http://74.119.194.18/textsearch', {
         'name': document.getElementById('search-input').value
       })
         .then(response => {
@@ -72,7 +72,7 @@ export default {
         })
     },
     searchByRole: function () {
-      axios.get('http://74.119.194.18/textsearch', {
+      axios.post('http://74.119.194.18/textsearch', {
         'role': document.getElementById('search-input').value
       })
         .then(response => {
@@ -84,7 +84,7 @@ export default {
         })
     },
     searchByProj: function () {
-      axios.get('http://74.119.194.18/textsearch', {
+      axios.post('http://74.119.194.18/textsearch', {
         'proj': document.getElementById('search-input').value
       })
         .then(response => {
