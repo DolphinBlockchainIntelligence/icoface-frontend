@@ -66,7 +66,8 @@ export default {
         console.log(response.data)
         console.log(routes)
         if (this.$route.path == '/face') {
-          routes.replace({ name: 'Face', params: response.data})
+          routes.push({ name: 'Blank' })
+          routes.push({ name: 'Face', params: response.data})
         } else {
           routes.push({ name: 'Face', params: response.data})
         }
@@ -83,7 +84,8 @@ export default {
           console.log(response.data)
           console.log(routes)
           if (this.$route.path == '/face') {
-            routes.replace({ name: 'Face', params: response.data})
+            routes.push({ name: 'Blank' })
+            routes.push({ name: 'Face', params: response.data})
           } else {
             routes.push({ name: 'Face', params: response.data})
           }
@@ -100,7 +102,8 @@ export default {
           console.log(response.data)
           console.log(routes) 
           if (this.$route.path == '/face') {
-            routes.replace({ name: 'Face', params: response.data})
+            routes.push({ name: 'Blank' })
+            routes.push({ name: 'Face', params: response.data})
           } else {
             routes.push({ name: 'Face', params: response.data})
           }

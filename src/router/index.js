@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Add from '@/components/Add'
 import Face from '@/components/Face'
 import Hello from '@/components/Hello'
+import Blank from '@/components/Blank'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/',
       name: 'Hello',
       component: Hello
+    },
+    {
+      path: '/',
+      name: 'Blank',
+      component: Blank
     }
   ]
 })
