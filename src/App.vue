@@ -65,7 +65,7 @@ export default {
       .then(response => {
         console.log(response.data)
         console.log(routes)
-        if (this.$route.path == '/face') {
+        if (this.$route.path == '/face' || this.$route.path == '/search') {
           routes.push({ name: 'Blank' })
           routes.push({ name: 'Face', params: response.data})
         } else {
@@ -83,7 +83,7 @@ export default {
         .then(response => {
           console.log(response.data)
           console.log(routes)
-          if (this.$route.path == '/face') {
+          if (this.$route.path == '/face' || this.$route.path == '/search') {
             routes.push({ name: 'Blank' })
             routes.push({ name: 'Face', params: response.data})
           } else {
@@ -102,7 +102,7 @@ export default {
           console.log(response.data)
           console.log(this.$route.path)
           console.log(routes) 
-          if (this.$route.path == '/face') {
+          if (this.$route.path == '/face' || this.$route.path == '/search') {
             console.log(this.$route.path)
             routes.push({ name: 'Blank' })
             routes.push({ name: 'Face', params: response.data})
