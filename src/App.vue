@@ -3,7 +3,6 @@
     <nav class="uk-navbar-container uk-margin" uk-navbar uk-sticky>
       <div class="uk-navbar-left">
         <router-link class="uk-navbar-item uk-logo" to="/"><span uk-icon="icon: happy"></span> ICOface</router-link>
-        <!-- <form class="header-search" @submit=""> -->
         <div class="header-search">
           <input class="uk-input uk-form-width-medium" type="text" placeholder="Search ICOface. For example: Sasha Ivanov" id="search-input">
           <div class="uk-button-group">
@@ -83,7 +82,7 @@ export default {
           this.errors.push(e)
         })
     },
-    searchByProj: function () {
+    searchByICO: function () {
       axios.post('http://74.119.194.18/textsearch', {
         'proj': document.getElementById('search-input').value
       })
