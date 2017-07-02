@@ -44,7 +44,8 @@ export default {
   name: 'app',
   data: () => ({
     server: 'http://74.119.194.18',
-    username: false
+    username: false,
+    faces: []
   }),
   mounted () {
     UIkit.use(Icons)
@@ -66,7 +67,7 @@ export default {
         console.log(response.data)
         console.log(routes)
         if (this.$route.path == '/face' || this.$route.path == '/search') {
-          routes.push({ name: 'Blank' })
+          routes.push({ name: 'Hello' })
           routes.push({ name: 'Face', params: response.data})
         } else {
           routes.push({ name: 'Face', params: response.data})
@@ -84,7 +85,7 @@ export default {
           console.log(response.data)
           console.log(routes)
           if (this.$route.path == '/face' || this.$route.path == '/search') {
-            routes.push({ name: 'Blank' })
+            routes.push({ name: 'Hello' })
             routes.push({ name: 'Face', params: response.data})
           } else {
             routes.push({ name: 'Face', params: response.data})
@@ -104,7 +105,7 @@ export default {
           console.log(routes) 
           if (this.$route.path == '/face' || this.$route.path == '/search') {
             console.log(this.$route.path)
-            routes.push({ name: 'Blank' })
+            routes.push({ name: 'Hello' })
             routes.push({ name: 'Face', params: response.data})
           } else {
             routes.push({ name: 'Face', params: response.data})
