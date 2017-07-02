@@ -24,7 +24,7 @@
         <ul class="uk-navbar-nav">
             <li v-if="username"><a href="#"><span uk-icon="icon: user"></span> EUGEN SOLOVIOV</a></li>
             <li v-else><a :href="server + '/auth/facebook'"><span uk-icon="icon: user"></span> Auth with facebook</a></li>
-            <li><router-link to="/add"><span uk-icon="icon: plus"></span> Add face</router-link></li>
+            <li v-if="username"><router-link to="/add"><span uk-icon="icon: plus"></span> Add face</router-link></li>
         </ul>
       </div>
     </nav>
