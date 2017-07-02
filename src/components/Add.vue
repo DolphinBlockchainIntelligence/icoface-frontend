@@ -46,7 +46,12 @@ export default {
   }),
   methods: {
     onSubmit: function () {
-      axios.post('/save', JSON.stringify(this.form))
+      // axios.post('/save', JSON.stringify(this.form))
+      axios.post({
+        url: '/save',
+        data: JSON.stringify(this.form),
+        headers: {'Content-Type': 'application/json'},
+      })
       .then(response => {
         console.log(response.status)
         UIkit.notification('Face added')

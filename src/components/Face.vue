@@ -2,10 +2,10 @@
   <div class="uk-container">
     <div class="face-list" v-for="item in items">
       <div class="face-item">
-        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-4@s uk-margin" uk-grid>
           <div class="uk-card-media-left uk-cover-container">
             <img :src="'/photos/'+item.photo" alt="" uk-cover>
-            <canvas width="600" height="400"></canvas>
+            <canvas width="250" height="200"></canvas>
           </div>
           <div>
             <div class="uk-card-body">
