@@ -31,6 +31,7 @@
 
 <script>
 import axios from 'axios'
+import UIkit from 'uikit/dist/js/uikit.min'
 export default {
   name: 'add',
   data: () => ({
@@ -47,9 +48,11 @@ export default {
     onSubmit: function () {
       axios.post('/save', JSON.stringify(this.form))
       .then(response => {
-        console.log(response)
+        console.log(response.status)
+        UIkit.notification('Face added')
       })
       .catch(e => {
+        UIkit.notification('Error')
         this.errors.push(e)
       })
     }
