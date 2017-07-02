@@ -27,11 +27,6 @@ export default {
     return {
       items: this.$route.params
     }
-  },
-  watch: {
-    '$route.params' () {
-      this.getPage()
-    }
   }
 }
 </script>
