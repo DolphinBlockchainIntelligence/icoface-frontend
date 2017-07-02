@@ -62,13 +62,18 @@ export default {
       axios.post('http://74.119.194.18/textsearch', {
         'name': document.getElementById('search-input').value
       })
-        .then(response => {
-          console.log(response.data)
+      .then(response => {
+        console.log(response.data)
+        console.log(routes)
+        if (this.$route.path == '/face') {
+          routes.replace({ name: 'Face', params: response.data})
+        } else {
           routes.push({ name: 'Face', params: response.data})
-        })
-        .catch(e => {
-          this.errors.push(e)
-        })
+        }
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
     },
     searchByRole: function () {
       axios.post('http://74.119.194.18/textsearch', {
@@ -76,7 +81,12 @@ export default {
       })
         .then(response => {
           console.log(response.data)
-          routes.push({ name: 'Face', params: response.data})
+          console.log(routes)
+          if (this.$route.path == '/face') {
+            routes.replace({ name: 'Face', params: response.data})
+          } else {
+            routes.push({ name: 'Face', params: response.data})
+          }
         })
         .catch(e => {
           this.errors.push(e)
@@ -88,7 +98,12 @@ export default {
       })
         .then(response => {
           console.log(response.data)
-          routes.push({ name: 'Face', params: response.data})
+          console.log(routes) 
+          if (this.$route.path == '/face') {
+            routes.replace({ name: 'Face', params: response.data})
+          } else {
+            routes.push({ name: 'Face', params: response.data})
+          }
         })
         .catch(e => {
           this.errors.push(e)
