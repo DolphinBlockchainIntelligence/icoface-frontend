@@ -4,7 +4,7 @@ import router from './router'
 
 Vue.config.productionTip = false
 
-new Vue({
+var vm = new Vue({
   el: '#app',
   router,
   template: '<App/>',
