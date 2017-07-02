@@ -11,7 +11,8 @@ export default new Router({
     {
       path: '/search',
       name: 'Face',
-      component: Face
+      component: Face,
+      meta: { reuse: false }
     },
     {
       path: '/add',
