@@ -2,10 +2,16 @@
   <div id="app">
     <nav class="uk-navbar-container uk-margin" uk-navbar uk-sticky>
       <div class="uk-navbar-left">
-          <router-link class="uk-navbar-item uk-logo" to="/"><span uk-icon="icon: happy"></span> ICOface</router-link>
-        <form class="header-search">
-          <input class="uk-input uk-form-width-medium" type="text" placeholder="Search ICOface. For example: Sasha Ivanov">
-        </form>
+        <router-link class="uk-navbar-item uk-logo" to="/"><span uk-icon="icon: happy"></span> ICOface</router-link>
+        <!-- <form class="header-search" @submit=""> -->
+        <div class="header-search">
+          <input class="uk-input uk-form-width-medium" type="text" placeholder="Search ICOface. For example: Sasha Ivanov" id="search-input">
+          <div class="uk-button-group">
+            <button class="uk-button uk-button-default" @click="searchByName()">Name</button>
+            <button class="uk-button uk-button-default" @click="searchByRole()">Role</button>
+            <button class="uk-button uk-button-default" @click="searchByICO()">ICO</button>
+          </div>
+        </div>
         <form role="form" class="form header-search-photo" @submit="fileSubmit()">
           <button class="uk-button uk-button-primary" @click="chooseFile()"><span uk-icon="icon: image"></span></button>
           <div class="form-group hide">
@@ -17,7 +23,7 @@
       </div>
       <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
-            <li v-if="username"><span uk-icon="icon: user"></span> {{ username }}</li>
+            <li v-if="username"><a href="#"><span uk-icon="icon: user"></span> EUGEN SOLOVIOV</a></li>
             <li v-else><a :href="server + '/auth/facebook'"><span uk-icon="icon: user"></span> Auth with facebook</a></li>
             <li><router-link to="/add"><span uk-icon="icon: plus"></span> Add face</router-link></li>
         </ul>
@@ -52,8 +58,45 @@ export default {
     })
   },
   methods: {
-    chooseFile: function() {
-      document.getElementById("file").click()
+    searchByName: function () {
+      console.log(document.getElementById('search-input').value)
+      axios.post('http://74.119.194.18/textsearch', {
+        'name': document.getElementById('search-input').value
+      })
+        .then(response => {
+          console.log(response.data)
+          routes.push({ name: 'Face', params: response.data})
+        })
+        .catch(e => {
+          this.errors.push(e)
+        })
+    },
+    searchByRole: function () {
+      axios.post('http://74.119.194.18/textsearch', {
+        'role': document.getElementById('search-input').value
+      })
+        .then(response => {
+          console.log(response.data)
+          routes.push({ name: 'Face', params: response.data})
+        })
+        .catch(e => {
+          this.errors.push(e)
+        })
+    },
+    searchByProj: function () {
+      axios.post('http://74.119.194.18/textsearch', {
+        'proj': document.getElementById('search-input').value
+      })
+        .then(response => {
+          console.log(response.data)
+          routes.push({ name: 'Face', params: response.data})
+        })
+        .catch(e => {
+          this.errors.push(e)
+        })
+    },
+    chooseFile: function () {
+      document.getElementById('file').click()
     },
     fileSubmit: function () {
       let file = document.getElementById('file').files[0]
@@ -85,7 +128,8 @@ export default {
 .hide
   display: none
 .header-search
-  width: 500px
+  white-space: nowrap
   input
-    width: 100%
+    width: 322px
+    margin-right: -5px
 </style>
