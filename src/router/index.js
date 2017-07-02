@@ -26,7 +26,7 @@ export default new Router({
       component: Hello
     },
     {
-      path: '/',
+      path: '/blank',
       name: 'Blank',
       component: Blank
     }
