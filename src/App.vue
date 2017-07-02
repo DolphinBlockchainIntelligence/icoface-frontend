@@ -100,8 +100,10 @@ export default {
       })
         .then(response => {
           console.log(response.data)
+          console.log(this.$route.path)
           console.log(routes) 
           if (this.$route.path == '/face') {
+            console.log(this.$route.path)
             routes.push({ name: 'Blank' })
             routes.push({ name: 'Face', params: response.data})
           } else {
