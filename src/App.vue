@@ -11,11 +11,11 @@
             <button class="uk-button uk-button-default" @click="searchByICO()">ICO</button>
           </div>
         </div>
-        <form role="form" class="form header-search-photo" @submit="fileSubmit()">
+        <form id="searchByPhoto" role="form" class="form header-search-photo" @submit="fileSubmit()">
           <button class="uk-button uk-button-primary" @click="chooseFile()"><span uk-icon="icon: image"></span></button>
           <div class="form-group hide">
             <label for="file">File</label>
-            <input id="file" type="file" class="form-control" onchange="document.getElementById('upload').click()">
+            <input id="file" type="file" class="form-control" onchange="document.getElementById('searchByPhoto').submit()">
           </div>
           <button id="upload" type="submit" class="btn btn-primary hide">Upload</button>
         </form>
