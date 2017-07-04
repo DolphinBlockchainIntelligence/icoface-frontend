@@ -23,7 +23,7 @@
       <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
             <li v-if="username"><a href="#"><span uk-icon="icon: user"></span> {{ username }}</a></li>
-            <li v-else><a :href="server + '/auth/facebook'"><span uk-icon="icon: user"></span> Auth with facebook</a></li>
+            <li v-else><a href="/auth/facebook"><span uk-icon="icon: user"></span> Auth with facebook</a></li>
             <li v-if="username"><router-link to="/add"><span uk-icon="icon: plus"></span> Add face</router-link></li>
         </ul>
       </div>
@@ -43,7 +43,6 @@ import routes from './router'
 export default {
   name: 'app',
   data: () => ({
-    server: 'http://74.119.194.18',
     username: false,
     faces: []
   }),
@@ -60,7 +59,7 @@ export default {
   methods: {
     searchByName: function () {
       console.log(document.getElementById('search-input').value)
-      axios.post('http://74.119.194.18/textsearch', {
+      axios.post('/textsearch', {
         'name': document.getElementById('search-input').value
       })
       .then(response => {
@@ -78,7 +77,7 @@ export default {
       })
     },
     searchByRole: function () {
-      axios.post('http://74.119.194.18/textsearch', {
+      axios.post('/textsearch', {
         'role': document.getElementById('search-input').value
       })
         .then(response => {
@@ -96,7 +95,7 @@ export default {
         })
     },
     searchByICO: function () {
-      axios.post('http://74.119.194.18/textsearch', {
+      axios.post('/textsearch', {
         'proj': document.getElementById('search-input').value
       })
         .then(response => {
@@ -130,7 +129,7 @@ export default {
             var percentCompleted = Math.round( (progressEvent.loaded * 100) / progressEvent.total )
           }
         }
-        axios.post('http://74.119.194.18/imgsearch', data, config)
+        axios.post('/imgsearch', data, config)
           .then(response => {
             console.log(response.data)
             routes.push({ name: 'Face', params: response.data})
