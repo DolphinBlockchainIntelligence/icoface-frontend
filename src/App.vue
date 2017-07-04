@@ -2,6 +2,7 @@
   <div id="app">
     <nav class="uk-navbar-container uk-margin" uk-navbar uk-sticky>
       <div class="uk-navbar-left">
+        <a href="http://dolphin.bi/" class="dolphinbi" target="_blank"><img src="/static/img/dolphinbi-logo.png"></a>
         <router-link class="uk-navbar-item uk-logo" to="/"><span uk-icon="icon: happy"></span> ICOface</router-link>
         <div class="header-search">
           <input class="uk-input uk-form-width-medium" type="text" placeholder="Search ICOface. For example: Sasha Ivanov" id="search-input">
@@ -146,6 +147,12 @@ export default {
 <style lang="sass">
 .hide
   display: none
+.dolphinbi img
+  height: 30px
+  margin-left: 15px
+  filter: grayscale(100%)
+  &:hover
+    filter: none
 .header-search
   white-space: nowrap
   input
