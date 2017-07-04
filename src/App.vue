@@ -67,8 +67,8 @@ export default {
         console.log(response.data)
         console.log(routes)
         if (this.$route.path == '/face' || this.$route.path == '/search') {
-          routes.push({ name: 'Hello' })
-          routes.push({ name: 'Face', params: response.data})
+          // routes.push({ name: 'Hello' })
+          routes.go({ name: 'Face', params: response.data})
         } else {
           routes.push({ name: 'Face', params: response.data})
         }
@@ -85,8 +85,8 @@ export default {
           console.log(response.data)
           console.log(routes)
           if (this.$route.path == '/face' || this.$route.path == '/search') {
-            routes.push({ name: 'Hello' })
-            routes.push({ name: 'Face', params: response.data})
+            // routes.push({ name: 'Hello' })
+            routes.go({ name: 'Face', params: response.data})
           } else {
             routes.push({ name: 'Face', params: response.data})
           }
