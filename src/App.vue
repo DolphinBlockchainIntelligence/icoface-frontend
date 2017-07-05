@@ -12,13 +12,9 @@
             <button class="uk-button uk-button-default" @click="searchByICO()">ICO</button>
           </div>
         </div>
-        <form id="searchByPhoto" role="form" class="form header-search-photo" @submit="fileSubmit()">
+        <form id="searchByPhoto" role="form" class="form header-search-photo">
           <button class="uk-button uk-button-primary" @click="chooseFile()"><span uk-icon="icon: image"></span></button>
-          <div class="form-group hide">
-            <label for="file">File</label>
-            <input id="file" type="file" class="form-control" onchange="document.getElementById('searchByPhoto').submit()">
-          </div>
-          <button id="upload" type="submit" class="btn btn-primary hide">Upload</button>
+          <input id="file" type="file" @change="fileSubmit()" class="hide">
         </form>
       </div>
       <div class="uk-navbar-right">
@@ -45,7 +41,9 @@ export default {
   name: 'app',
   data: () => ({
     username: false,
-    faces: []
+    faces: [],
+    searchCounter: 0,
+    photo: ''
   }),
   mounted () {
     UIkit.use(Icons)
@@ -59,61 +57,46 @@ export default {
   },
   methods: {
     searchByName: function () {
-      console.log(document.getElementById('search-input').value)
-      axios.post('/textsearch', {
+      axios.post('http://icoface.dolphin.bi/textsearch', {
         'name': document.getElementById('search-input').value
       })
       .then(response => {
-        console.log(response.data)
-        console.log(routes)
-        if (this.$route.path == '/face' || this.$route.path == '/search') {
-          // routes.push({ name: 'Hello' })
-          routes.go({ name: 'Face', params: response.data})
-        } else {
-          routes.push({ name: 'Face', params: response.data})
-        }
+        this.searchCounter++
+        let data = response.data
+        data.id = this.searchCounter
+        routes.push({ name: 'Face', params: data })
       })
       .catch(e => {
         this.errors.push(e)
       })
     },
     searchByRole: function () {
-      axios.post('/textsearch', {
+      axios.post('http://icoface.dolphin.bi/textsearch', {
         'role': document.getElementById('search-input').value
       })
-        .then(response => {
-          console.log(response.data)
-          console.log(routes)
-          if (this.$route.path == '/face' || this.$route.path == '/search') {
-            // routes.push({ name: 'Hello' })
-            routes.go({ name: 'Face', params: response.data})
-          } else {
-            routes.push({ name: 'Face', params: response.data})
-          }
-        })
-        .catch(e => {
-          this.errors.push(e)
-        })
+      .then(response => {
+        this.searchCounter++
+        let data = response.data
+        data.id = this.searchCounter
+        routes.push({ name: 'Face', params: data })
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
     },
     searchByICO: function () {
-      axios.post('/textsearch', {
+      axios.post('http://icoface.dolphin.bi/textsearch', {
         'proj': document.getElementById('search-input').value
       })
-        .then(response => {
-          console.log(response.data)
-          console.log(this.$route.path)
-          console.log(routes) 
-          if (this.$route.path == '/face' || this.$route.path == '/search') {
-            console.log(this.$route.path)
-            routes.push({ name: 'Hello' })
-            routes.push({ name: 'Face', params: response.data})
-          } else {
-            routes.push({ name: 'Face', params: response.data})
-          }
-        })
-        .catch(e => {
-          this.errors.push(e)
-        })
+      .then(response => {
+        this.searchCounter++
+        let data = response.data
+        data.id = this.searchCounter
+        routes.push({ name: 'Face', params: data })
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
     },
     chooseFile: function () {
       document.getElementById('file').click()
@@ -121,24 +104,23 @@ export default {
     fileSubmit: function () {
       let file = document.getElementById('file').files[0]
       console.log(file)
-      var output = document.getElementById('output');
-      document.getElementById('upload').onclick = function () {
-        var data = new FormData();
-        data.append('photo', document.getElementById('file').files[0])
-        var config = {
-          onUploadProgress: function(progressEvent) {
-            var percentCompleted = Math.round( (progressEvent.loaded * 100) / progressEvent.total )
-          }
+      let data = new FormData();
+      data.append('photo', document.getElementById('file').files[0])
+      let config = {
+        onUploadProgress: function(progressEvent) {
+          let percentCompleted = Math.round( (progressEvent.loaded * 100) / progressEvent.total )
         }
-        axios.post('/imgsearch', data, config)
-          .then(response => {
-            console.log(response.data)
-            routes.push({ name: 'Face', params: response.data})
-          })
-          .catch(e => {
-            this.errors.push(e)
-          })
       }
+      axios.post('http://icoface.dolphin.bi/imgsearch', data, config)
+      .then(response => {
+        this.searchCounter++
+        let data = response.data
+        data.id = this.searchCounter
+        routes.push({ name: 'Face', params: data })
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
     }
   }
 }

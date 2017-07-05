@@ -4,7 +4,7 @@
       <div class="face-item">
         <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-4@s uk-margin" uk-grid>
           <div class="uk-card-media-left uk-cover-container">
-            <img :src="'/photos/'+item.photo" alt="" uk-cover>
+            <img :src="'http://icoface.dolphin.bi/photos/'+item.photo" alt="" uk-cover>
             <canvas width="200" height="200"></canvas>
           </div>
           <div>
@@ -27,6 +27,11 @@ export default {
     return {
       items: this.$route.params
     }
+  },
+  beforeRouteUpdate (to, from, next) {
+    console.log('update')
+    this.items = to.params
+    next()
   }
 }
 </script>
